@@ -68,10 +68,18 @@ def semagram_extraction(sentence):
         for child in root:
             if child.attrib['synset'] == s.name():
                 semagram.add(child)
-    print(semagram)
+    print('***SEMAGRAMS FOR SENTENCE: ' + str(sentence) + '***')
+    for e in semagram:
+        print(e.attrib)
 
+def truncate(l,n):
+    res = []
+    for i in range(n):
+        res.append(l[i])
+    return res
 
 i = 0
+#sentences = truncate([s for s in brown.sents(categories='hobbies')],100)
 sentences = [s for s in brown.sents(categories='hobbies')]
 for s in sentences:
     semagram_extraction(preprocess(s))
